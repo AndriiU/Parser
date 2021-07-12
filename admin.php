@@ -5,7 +5,7 @@ include 'header.php';
 echo '<div style="margin-top:42px;"></div>';
 function _auth(){
     
-    $pass = '<jhcer4thn';
+    $pass = 'pass';
     if ( isset($_POST['pass_value'], $_POST['pass_btn']) ) {
         if ($pass == $_POST['pass_value']) {
             $_SESSION['unique_sdfcdrgbtrhbgfnb'] = true;
