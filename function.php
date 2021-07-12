@@ -9,10 +9,7 @@ function ParsingXMLDE($url_korr, $count, $site)
 		//site feed title an desc
 		$feed_title = $rss_korr->channel->title;
 		$feed_desc = $rss_korr->channel->description;
-		//echo $feed_title;
 
-
-		//echo '<div class="channel">' . $rss_korr->channel->title . '</div>';
 		echo '<div class="channel">' . $feed_title . '</div>';
 		foreach ($rss_korr->channel->item as $item)
 		{
@@ -38,12 +35,11 @@ function ParsingXMLDE($url_korr, $count, $site)
 		    $link = $item->link;
 		    $title = $item->title;
 
-		    $description = $item->description;
-			//$description = preg_replace("/\<\!\[CDATA\[(.*?)\]\]\>/ies", "'[CDATA]'.base64_encode('$1').'[/CDATA]'", $description);
+			$description = $item->description;
 			$description = str_replace('a>', "", $description);
 			$description = str_replace('">', "", $description);
 			$firsttitle = $title;
-	     	$count_korr2 = $count_korr + $count;
+			$count_korr2 = $count_korr + $count;
 
 	        echo '<div class="news-con'. $count_korr .'"><span class="date">' . $hour . '-' . $minute . ' </span>';
 			echo '<a href="' . $link . '" target="_blank"><span class="title">' . $item->title . '</span></a>';
@@ -53,9 +49,7 @@ function ParsingXMLDE($url_korr, $count, $site)
 			echo '<input type="hidden" name="link-min" value="' . $minute . $count_korr2 .'" />';
 			echo '<input type="hidden" name="link-ahref" value="' . $link . $count_korr2 .'" />';
 			echo '<input type="hidden" name="link-title" value="' . $title . $count_korr2 .'" />';
-			// echo '<input type="hidden" name="link-description" value="' . $description . $count_korr2 .'" />';
 			echo '<div class="read"><a href="' . $link . '" target="_blank">More..</a></div>';
-			//echo '<div class="read"><input type="submit" value="More.." class="btn btn-primary"/></div>';
 			echo '</div>';
 
 			if ($count_korr == 13) break;
@@ -68,7 +62,6 @@ function ParsingXMLDE($url_korr, $count, $site)
 
 function ParsingT($url_korr, $count, $site)
 {
-    //include ('../simple_html_dom.php');
 	$count_korr = 1;
 	$rss_korr = simplexml_load_file($url_korr, null, LIBXML_NOCDATA);
 	if ($rss_korr != NULL){
@@ -83,7 +76,6 @@ function ParsingT($url_korr, $count, $site)
 
 function ParsingD($url_korr, $count, $site)
 {
-    //include ('../simple_html_dom.php');
 	$count_korr = 1;
 	$rss_korr = simplexml_load_file($url_korr, null, LIBXML_NOCDATA);
 	if ($rss_korr != NULL){
